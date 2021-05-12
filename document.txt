@@ -1,0 +1,9 @@
+Start Project
+-npx create-react-app app-name
+After installing project biolerplate
+
+To run the react app
+- npm Start
+
+To  install dependencies
+npm install  dependencies_name
