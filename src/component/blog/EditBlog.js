@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button,Image } from 'react-bootstrap';
-import {useHistory} from 'react-router-dom'
+import {useHistory,Redirect,withRouter} from 'react-router-dom'
 class EditBlog extends Component {
     constructor(props){
         super(props)
@@ -15,7 +15,7 @@ class EditBlog extends Component {
     handleOnChange = ({target}) =>{
         this.setState({[target.name]:target.value})
     }
-    handleOnSubmit = () =>{
+    handleOnSubmit = async() =>{
         let blog=this.state
         console.log("click")
         let formData = new FormData()
@@ -25,15 +25,16 @@ class EditBlog extends Component {
         formData.append('blog_image',this.state.blog_image)
         formData.append('_id',this.props.location.editData._id)
 
-        this.props.addBlog(formData)
+        await this.props.addBlog(formData)
         this.props.location.pathname="/blog"
+    //    return <Redirect to="/blog" />
         
     }
     handleImage = (event) =>{
         this.setState({blog_image:event.target.files[0]})
     }
     render() {
-        console.log(this.props.location)
+        
         return (
             <Form className="col-6 mx-auto my-3">
                 <Form.Group controlId="exampleForm.ControlInput1">

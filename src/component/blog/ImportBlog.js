@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route,Link ,withRouter} from 'react-router-dom'
 import AddBlog from './AddBlog';
 import ShowBlog from './ShowBlog';
 import axios from 'axios'
@@ -19,22 +19,23 @@ class ImportBlog extends Component {
                 this.setState({ blog: [...this.state.blog, response.data.data] })
 
             })
-
-
     }
+    
 
     render() {
-        console.log(this.state)
+        
 
         return (
             <>
-                <Route exact path="/blog"><ShowBlog {...this.props}/></Route>
                 <Route exact path="/addblog"><AddBlog addBlog={this.addBlog} {...this.props}/></Route>
-                {this.props.location.editData ? <Route exact path="/editblog"><EditBlog {...this.props} addBlog={this.addBlog} /></Route> : null}
+                {this.props.location.editData ? <Route exact path="/editblog"><BlogFun {...this.props} addBlog={this.addBlog} /></Route> :
+                                <Route exact path="/blog"><ShowBlog {...this.props}/></Route>
+
+                }
                 <Route exact path="/delete" />
             </>
         );
     }
 }
 
-export default ImportBlog;
+export default withRouter(ImportBlog);

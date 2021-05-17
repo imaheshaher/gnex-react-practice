@@ -1,9 +1,102 @@
-Start Project
--npx create-react-app app-name
+### Start Project
+ npx create-react-app app-name
+
 After installing project biolerplate
 
-To run the react app
-- npm Start
+### To run the react app
+### `npm Start`
 
-To  install dependencies
+### To  install dependencies
 npm install  dependencies_name
+
+
+--------------------------------------
+### React Folder Structure
+|-node_modules
+|-public
+|    favicon.ico
+|    index.html
+|    logo192.png
+|    logo512.png
+|    manifest.json
+|    robots.txt
+|-src
+│   App.css
+│   App.js
+│   App.test.js
+│   index.css
+│   index.js
+│   logo.svg
+│   reportWebVitals.js
+│   setupTests.js
+
+|package-lock.json
+|package.json
+
+------------------------------------------------------------
+in src/index.js -> include App component which is src/App.js
+
+when we add new component then we should work in src Folder
+make a new Folder with name component
+and Add new files in component folder that you want to write component
+ex 
+|-src
+    |-component
+    |   Header.js
+
+then you write component in Header file
+and import it into src/App.js
+
+In such a manner you can write multiple component and import it into one component such as src/App.js
+
+
+---------------------------------------------------------------------------------------
+### component in react
+
+###  `Functional component`
+See the section about (https://reactjs.org/docs/components-and-props.html) for more information.
+
+###   `Class component`
+
+See the section about (https://reactjs.org/docs/react-component.html) for more information
+
+### State and Lifecycle
+(https://reactjs.org/docs/state-and-lifecycle.html)
+    state is as like a variable which store the value 
+ -   in Functional component we declare state as 
+        const [count,setCount] = useState(intialValue)
+        when we need to change state value then  use setCount(value) 
+        when you access the state value then only use count
+
+### props
+
+    props is used to pass the value from parent component to child component
+
+
+### how to access state or props value in jsx
+    -we have to use {state }
+
+### React Routing
+    react create a single page application 
+    if you want to redirect to another page or open another page
+    then we use react-router-dom by installing npm install react-router-dom
+
+    import {BrowserRouter as Router,Switch,Route} from 'react-router-dom' in src/App.js
+    in App.js <Router>
+                <Switch>
+                <Route exact path="/pathname"><Component_name /> </Route>
+                </Switch>
+             </Router>
+            the that component should render on localhost/pathname
+
+### React Hooks
+(https://reactjs.org/docs/hooks-intro.html)
+
+    
+See more here (https://github.com/imaheshaher/gnex-react-practice)
+
+
+
+
+
+

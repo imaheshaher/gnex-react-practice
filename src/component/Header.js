@@ -17,23 +17,26 @@ import {Link} from 'react-router-dom'
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
+  let token = localStorage.getItem("token")
+  
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand tag={Link} to="/">Gnex</NavbarBrand>
+    
+      <Navbar color="light" light expand="md"  >
+        <div className="container">
+        <NavbarBrand tag={Link} to="/" style={{padding:'10px'}}>Gnex</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="mx-2" navbar >
             <NavItem>
               <NavLink tag={Link} to="/blog">
                   Blog
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <NavLink tag={Link} to="/users">Users</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -54,9 +57,16 @@ const Header = (props) => {
             </UncontrolledDropdown>
           </Nav>
           <NavbarText>Simple Text</NavbarText>
+          <Nav>
+          <NavItem>
+            <NavLink tag={Link} to="/login">Login</NavLink>
+              
+            </NavItem>
+            </Nav>
         </Collapse>
-      </Navbar>
     </div>
+
+      </Navbar>
   );
 }
 

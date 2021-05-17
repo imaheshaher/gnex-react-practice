@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
-
+import axios from 'axios'
+import {withRouter} from 'react-router-dom'
 class AddBlog extends Component {
     constructor(){
         super()
@@ -22,12 +23,22 @@ class AddBlog extends Component {
 
         formData.append('blog_image',this.state.blog_image)
 
-        this.props.addBlog(formData)
-        this.props.location.pathname="/blog"
+        // this.props.addBlog(formData)
+        this.addBlog(formData)
+        
     }
     handleImage = (event) =>{
         this.setState({blog_image:event.target.files[0]})
     }
+    addBlog = (blog) => {
+        console.log(blog)
+        axios.post(`http://127.0.0.1:5000/blog`, blog)
+            .then(response =>{
+                console.log(response)
+            })
+
+    }
+
     render() {
         return (
             <Form className="col-6 mx-auto my-3">
@@ -57,4 +68,4 @@ class AddBlog extends Component {
     }
 }
 
-export default AddBlog;
+export default withRouter(AddBlog);
